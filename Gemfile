@@ -12,6 +12,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
 gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
@@ -29,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 #gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'sendgrid-ruby'
+gem 'simple_form'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

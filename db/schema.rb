@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_050926) do
     t.integer "amount"
     t.string "type"
     t.string "description"
+    t.date "date"
     t.bigint "user_id"
     t.bigint "expense_type_id"
     t.index ["expense_type_id"], name: "index_transactions_on_expense_type_id"

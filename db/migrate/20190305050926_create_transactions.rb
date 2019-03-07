@@ -5,6 +5,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.string :type #credit and Debit
       t.string :description
+      t.date :date
     end
     add_reference :transactions, :user, index: true
     add_reference :transactions, :expense_type, index: true

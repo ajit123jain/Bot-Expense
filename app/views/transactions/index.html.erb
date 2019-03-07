@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<h1>Transactions</h1>
+<div class="well">
+  <%= link_to 'Add Transactions', new_transaction_path , remote: true, class: "btn btn-default" ,:id => "new_transaction" %>
+</div>
+<div class="new-transaction"></div>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Author Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+  <tbody class="author-index"> 
+   <%= render 'index' %>
+  </tbody>
+</table>
+<div id="transaction-modal" class="modal fade">
+</div>
+
+
