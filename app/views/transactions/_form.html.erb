@@ -5,7 +5,8 @@
       <h4 class="modal-title text-center">Add Transaction</h4>
     </div>
     <%= simple_form_for @transaction, remote: true do |form| %>
-      <div class="modal-body">   
+      <div class="modal-body">  
+        <%= form.input :user_id, :as => :hidden, :input_html => { :value => "#{current_user.id}" }%> 
         <div class="form-group">
           <%= form.input :name, class:"form-control" %>
         </div>
@@ -13,7 +14,7 @@
           <%= form.input :amount, class:"form-control" %>
         </div>
         <%= form.association :expense_type %>
-        <%= form.input :type, :collection => ['Debit','Credit']%>
+        <%= form.input :transaction_type, :collection => ['Debit','Credit']%>
         <% date = @transaction.date ? @transaction.date.strftime('%d/%m/%Y') : Date.today.strftime('%d/%m/%Y')%>
           <%= form.input :date, required: true , as: :string, label: 'Transaction Date',input_html: {value: date,readonly: true } %>
         <div class="form-group">

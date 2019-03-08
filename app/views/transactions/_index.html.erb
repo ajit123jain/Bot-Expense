@@ -1,0 +1,10 @@
+ <% @transactions.each do |transaction| %>
+  <tr>
+    <td><%= transaction.name %></td>
+    <td><%= transaction.expense_type.name %></td>
+    <td><%= transaction.transaction_type %></td>
+    <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
+    <td><%= link_to 'Edit', edit_transaction_path(transaction),remote: true ,class: "btn btn-primary" ,:id => "edit"  %></td>
+    <td><%= link_to "Delete", transaction_delete_path(transaction), remote: true, class: "btn btn-danger" ,:id => "destroy"  %></td>
+  </tr>
+<% end %>

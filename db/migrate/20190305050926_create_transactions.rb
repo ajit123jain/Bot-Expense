@@ -3,7 +3,7 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
     create_table :transactions do |t|
       t.string :name
       t.integer :amount
-      t.string :type #credit and Debit
+      t.string :transaction_type #credit and Debit
       t.string :description
       t.date :date
     end

@@ -31,8 +31,6 @@
     <div class="form-group">
       <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Update</button>
     </div>
-    <h2>Cancel my account</h2>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-primary btn-lg btn-block signup-btn', data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-primary btn-lg btn-block signup-btn', data: { confirm: "Are you sure?" }, method: :delete %>
   <% end %>
 </div>

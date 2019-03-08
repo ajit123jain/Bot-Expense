@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :authorize_user
-  
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+
   def index
-    transactions = Transaction.where(user_id:current_user.id)
+    @transactions = Transaction.includes(:expense_type).where(user_id:current_user.id)
   end
 
   def new
@@ -16,7 +17,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
       if @transaction.save
-       format.js { } 
+        @transactions = Transaction.includes(:expense_type).where(user_id:current_user.id)
+        format.js { } 
       else
         format.js { }
       end
@@ -28,20 +30,34 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    
+    respond_to do |format|
+      if @transaction.update(transaction_params)
+        @transactions = Transaction.includes(:expense_type).where(user_id:current_user.id)
+        format.js { } 
+      else
+        format.js { render :edit }
+      end
+    end
+  end
+
+  def delete
+    @transaction =  Transaction.find(params[:transaction_id])
   end
 
   def destroy
-
+    @transaction.destroy
+    respond_to do |format|
+      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+    end
   end
 
   private
   
   def transaction_params 
-    params.permit(:id,:name,:amount,:type,:description,:user_id,:expense_type_id)
+    params.require(:transaction).permit(:id,:name,:amount,:transaction_type,:description,:user_id,:expense_type_id,:date)
   end
   
   def set_transaction
-    Transaction.find_by(params[:id])
+    @transaction =  Transaction.find(params[:id])
   end
 end
